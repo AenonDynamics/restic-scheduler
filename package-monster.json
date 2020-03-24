@@ -1,0 +1,66 @@
+{
+    "name": "restic-scheduler",
+    "version": "0.4.0",
+    "package-monster": "0.4.0",
+    "description": "systemd based backup schedules for restic",
+    "license": "MPL-2.0",
+    "author": "Andi Dittrich <opensource@aenon-dynamics.com>",
+    "website": "https://github.com/AenonDynamics/restic-scheduler",
+    "bugs": "https://github.com/AenonDynamics/restic-scheduler/issues",
+    "multiversion": false,
+
+    "debian": {
+
+        "section": "admin",
+        "priority": "optional",
+
+        "dependencies": [
+            "restic (>= 0.9.0)"
+        ],
+
+        "conf": [
+        ],
+
+        "etc": [
+            {
+                "src": "config/example.conf",
+                "dst": "restic/example.conf"
+            },
+            {
+                "src": "config/exclude.list",
+                "dst": "restic/exclude.list"
+            }
+        ],
+
+        "bin": [
+        ],
+
+        "sbin": [
+        ],
+
+        "files": [
+            {
+                "src": "systemd/restic-scheduler@.service",
+                "dst": "/lib/systemd/system/restic-scheduler@.service"
+            },
+            {
+                "src": "systemd/restic-scheduler@.timer",
+                "dst": "/lib/systemd/system/restic-scheduler@.timer"
+            },
+
+            {
+                "src": "systemd/restic-retention@.service",
+                "dst": "/lib/systemd/system/restic-retention@.service"
+            },
+            {
+                "src": "systemd/restic-retention@.timer",
+                "dst": "/lib/systemd/system/restic-retention@.timer"
+            }
+        ],
+
+        "scripts": {
+            "preinst": "install/setup"
+        }
+    }
+
+}

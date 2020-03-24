@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+# add backup user
+useradd restic -d /etc/restic --system --no-create-home || {
+    echo "cannot create restic backup user"
+}
+
+# create config dir
+install -d /etc/restic -o restic -g restic -m 0755
+
+# create cache dir
+install -d /var/cache/restic -o restic -g restic -m 0750

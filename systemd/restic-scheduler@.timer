@@ -1,0 +1,15 @@
+[Unit]
+Description=restic daily schedule for %I
+
+[Timer]
+# Run at 03:30 am
+OnCalendar=03:30
+
+# do NOT start backup immediately if its missed (servers..)
+Persistent=false
+
+# linked unit instance
+Unit=restic-scheduler@%i.service
+
+[Install]
+WantedBy=timers.target
