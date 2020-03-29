@@ -1,6 +1,6 @@
 {
     "name": "restic-scheduler",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "package-monster": "0.4.0",
     "description": "systemd based backup schedules for restic",
     "license": "MPL-2.0",
@@ -47,6 +47,10 @@
                 "src": "systemd/restic-scheduler@.timer",
                 "dst": "/lib/systemd/system/restic-scheduler@.timer"
             },
+            {
+                "src": "systemd/restic-scheduler-log@.service",
+                "dst": "/lib/systemd/system/restic-scheduler-log@.service"
+            },
 
             {
                 "src": "systemd/restic-retention@.service",
@@ -55,6 +59,10 @@
             {
                 "src": "systemd/restic-retention@.timer",
                 "dst": "/lib/systemd/system/restic-retention@.timer"
+            },
+            {
+                "src": "systemd/restic-retention-log@.service",
+                "dst": "/lib/systemd/system/restic-retention-log@.service"
             }
         ],
 

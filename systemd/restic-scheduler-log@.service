@@ -1,0 +1,28 @@
+[Unit]
+Description=restic-scheduler logger for %i
+After=restic-scheduler@%i.service
+
+[Service]
+Type=simple
+
+# user downgrade
+User=restic
+Group=systemd-journal
+
+# Prevent writes to /usr, /boot, and /etc
+ProtectSystem=full
+
+# Prevent accessing /home, /root and /run/user
+ProtectHome=true
+
+# Prevent access to /dev | /dev/null,random,true,... will be virtually provided
+PrivateDevices=true
+
+# Prevent accessing /tmp
+PrivateTmp=true
+
+# extract logs
+ExecStart=taskrunner-systemd "restic backup of %i" restic-scheduler@%i.service
+
+[Install]
+WantedBy=restic-scheduler@%i.service

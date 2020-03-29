@@ -11,6 +11,7 @@ systemd based backup schedules for [restic](https://restic.net/) with per-instan
 * Monthly data cleanup (forget+prune) and integrity check
 * systemd `restic-scheduler@.service` to run the backup
 * systemd `restic-retention@.service` to apply the data retention policy (`restic forget --prune`) and run backup integrity check
+* send backup logs (from journald) via [taskrunner](https://github.com/AenonDynamics/taskrunner-sh) to custom http endpoint (optional)
 
 ## Package Installation ##
 
@@ -29,7 +30,7 @@ apt-get install restic-scheduler
 * Create config path `/etc/restic`
 * Create cache path `/var/cache/restic`
 
-## Schedules ##
+## Setup ##
 
 ### Setup systemd for scheduled backups ###
 
@@ -66,7 +67,7 @@ BACKUP_PATHS="/opt /srv /home"
 **Enable schedule**
 
 ```bash
-systemctl enable restic-scheduler@mybackup.timer
+systemctl enable restic-scheduler@mybackup.timer --now
 ```
 
 **systemd files**
@@ -113,13 +114,34 @@ VALIDATION_ARGS=""
 **Enable schedule**
 
 ```bash
-systemctl enable restic-retention@mybackup.timer
+systemctl enable restic-retention@mybackup.timer --now
 ```
 
 **Defaults**
 
 * `/lib/systemd/system/restic-retention@.timer`
 * `/lib/systemd/system/restic-retention@.service`
+
+
+### Send journald log to http endpoint ###
+
+Sometime it's useful to receive backup logs via e-mail or push-notification without the requirement of a central syslog service.
+restic-scheduler comes with support for [taskrunner](https://github.com/AenonDynamics/taskrunner-sh) to log job outputs via a custom http endpoint.
+
+In case of restic-scheduler, an additional systemd service is invoked which extracts the log output from journald as well as start/stop timestamps and the exit code.
+
+**Enable log transmission**
+
+```bash
+systemctl enable restic-scheduler-log@mybackup.service --now
+systemctl enable restic-retention-log@mybackup.service --now
+```
+
+**Defaults**
+
+* `/lib/systemd/system/restic-scheduler-log@.service`
+* `/lib/systemd/system/restic-retention-log@.service`
+
 
 ## Contribution ##
 
