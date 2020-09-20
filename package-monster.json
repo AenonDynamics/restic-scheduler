@@ -1,6 +1,6 @@
 {
     "name": "restic-scheduler",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "package-monster": "0.4.0",
     "description": "systemd based backup schedules for restic",
     "license": "MPL-2.0",

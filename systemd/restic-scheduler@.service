@@ -42,6 +42,7 @@ EnvironmentFile=/etc/restic/%I.conf
 
 # run snapshot
 ExecStart=restic backup \
+    --cache-dir $RESTIC_CACHE_DIR \
     --verbose \
     --one-file-system \
     --tag "restic.scheduler" \

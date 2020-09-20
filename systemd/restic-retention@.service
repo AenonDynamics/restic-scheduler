@@ -41,6 +41,7 @@ EnvironmentFile=/etc/restic/%I.conf
 # only remove snapshots with tag=restic.scheduler
 # --group-by "paths,tags" | The policy is then applied to each group of snapshots separately. This is a safety feature.
 ExecStart=restic forget \
+    --cache-dir    $RESTIC_CACHE_DIR \
     --verbose \
     --tag          "restic.scheduler" \
     --group-by     "paths,tags" \
