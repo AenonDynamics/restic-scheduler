@@ -34,13 +34,13 @@ IOSchedulingClass=best-effort
 IOSchedulingPriority=7
 
 # env config
+Environment="RESTIC_CACHE_DIR=/var/cache/restic"
 EnvironmentFile=/etc/restic/%I.conf
 
 # run restic cleanup (forget + prune)
 # only remove snapshots with tag=restic.scheduler
 # --group-by "paths,tags" | The policy is then applied to each group of snapshots separately. This is a safety feature.
 ExecStart=restic forget \
-    --cache-dir /var/cache/restic \
     --verbose \
     --tag          "restic.scheduler" \
     --group-by     "paths,tags" \
@@ -54,6 +54,5 @@ ExecStart=restic forget \
 
 # run backup integrity check
 ExecStart=restic check \
-    --cache-dir /var/cache/restic \
     --verbose \
     $VALIDATION_ARGS
