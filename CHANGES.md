@@ -1,3 +1,9 @@
+### 0.7.0 ###
+
+* Changed: `restic-scheduler.timer` start-time to `02:30 UTC`
+* Changed: set a random `30m` delay to `restic-scheduler.timer` via systemd-timer - this will avoid connection limit issues in case multiple tasks are runnung in parallel
+* Changed: set a random `60m` delay to `restic-retention.timer` via systemd-timer - this will avoid connection limit issues in case multiple tasks are runnung in parallel
+
 ### 0.6.1 ###
 
 * Bugfix: for compatibility with legacy restic version `<0.9.6` without `RESTIC_CACHE_DIR` environment variable support, the `--cache-dir` argument is set to `RESTIC_CACHE_DIR`

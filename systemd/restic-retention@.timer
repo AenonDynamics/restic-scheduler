@@ -4,6 +4,7 @@ Description=restic data retention policy schedule for %I
 [Timer]
 #monthly: *-*-01 00:00:00
 OnCalendar=monthly
+RandomizedDelaySec=60m
 
 # do NOT start immediately if its missed (servers..)
 Persistent=false

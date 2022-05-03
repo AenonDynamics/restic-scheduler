@@ -2,8 +2,9 @@
 Description=restic daily schedule for %I
 
 [Timer]
-# Run at 03:30 am
-OnCalendar=03:30
+# Run at 02:30 am
+OnCalendar=02:30
+RandomizedDelaySec=30m
 
 # do NOT start backup immediately if its missed (servers..)
 Persistent=false
