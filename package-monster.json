@@ -41,28 +41,27 @@
         "files": [
             {
                 "src": "systemd/restic-scheduler@.service",
-                "dst": "/lib/systemd/system/restic-scheduler@.service"
+                "dst": "/usr/lib/systemd/system/restic-scheduler@.service"
             },
             {
                 "src": "systemd/restic-scheduler@.timer",
-                "dst": "/lib/systemd/system/restic-scheduler@.timer"
+                "dst": "/usr/lib/systemd/system/restic-scheduler@.timer"
             },
             {
                 "src": "systemd/restic-scheduler-log@.service",
-                "dst": "/lib/systemd/system/restic-scheduler-log@.service"
+                "dst": "/usr/lib/systemd/system/restic-scheduler-log@.service"
             },
-
             {
                 "src": "systemd/restic-retention@.service",
-                "dst": "/lib/systemd/system/restic-retention@.service"
+                "dst": "/usr/lib/systemd/system/restic-retention@.service"
             },
             {
                 "src": "systemd/restic-retention@.timer",
-                "dst": "/lib/systemd/system/restic-retention@.timer"
+                "dst": "/usr/lib/systemd/system/restic-retention@.timer"
             },
             {
                 "src": "systemd/restic-retention-log@.service",
-                "dst": "/lib/systemd/system/restic-retention-log@.service"
+                "dst": "/usr/lib/systemd/system/restic-retention-log@.service"
             }
         ],
 

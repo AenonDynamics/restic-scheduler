@@ -1,3 +1,7 @@
+### 0.7.1 ###
+
+* Bugfix: use merged usr paths to avoid issues with bootstrapping
+
 ### 0.7.0 ###
 
 * Changed: `restic-scheduler.timer` start-time to `02:30 UTC`
